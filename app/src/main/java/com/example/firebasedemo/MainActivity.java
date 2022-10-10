@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Adding data to the Database through user interaction
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,11 +56,12 @@ public class MainActivity extends AppCompatActivity {
                 if (txt_name.isEmpty()){
                     Toast.makeText(MainActivity.this, "No name entered!", Toast.LENGTH_SHORT).show();
                 }else{
-                    FirebaseDatabase.getInstance().getReference().child("Chibwe").push().child("Name").setValue(txt_name);
+                    FirebaseDatabase.getInstance().getReference().child("Language").child("Name").setValue(txt_name);
                 }
 
             }
         });
+        //Retrieving data in list form from the database
         ArrayList<String> list = new ArrayList<>();
         ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.list_item, list);
         listView.setAdapter(adapter);
